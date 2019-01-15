@@ -1,0 +1,10 @@
+FROM node:10.15-alpine
+
+WORKDIR /front
+
+RUN apk update && \
+  npm install -g npm && \
+  npm install -g vue-cli && \
+  npm install -g axios
+
+CMD ["/bin/sh"]

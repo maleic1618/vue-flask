@@ -1,0 +1,26 @@
+version: '3'
+services:
+  front:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-front
+    ports:
+      - 8080:8080
+    volumes:
+      - ./front:/front
+      - ./dist:/dist
+    stdin_open: true
+    tty: true
+  back:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-back
+    ports:
+      - 5000:5000
+    volumes:
+      - ./back:/back
+      - ./dist:/dist
+    stdin_open: true
+    tty: true
+    command:
+      flask run --host=0.0.0.0
